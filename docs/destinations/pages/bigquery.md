@@ -115,3 +115,5 @@ Enter the details for your BigQuery Dataset in the form and click on **Validate 
 **Step 6:**
 In case you choose that DataChannel manage a BigQuery warehouse for you, the process to add a DataChannel managed warehouse is very simple. Just fill in your Google Account email and Region and click on **save**.
 ![DataChannel Managed BQ](../images/destinations-bq-dc.png)
+
+{% include "redshift.md" %}
