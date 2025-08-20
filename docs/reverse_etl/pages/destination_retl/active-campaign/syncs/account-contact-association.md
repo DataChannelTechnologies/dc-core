@@ -32,4 +32,4 @@ Data Model:Select a Data Model from the drop-down.
 | Insert Mode | *Required*  | This refers to the manner in which data will be updated in the Active Campaign Platform; with 'Update' selected, the data will be updated (only existing records) and with 'Append' selected, all data fetched will be inserted. Selecting 'Delete' will delete the records. | `Update`, `Append`, `Delete` |
 
 ## Scheduling Syncs
-include::ROOT:partial$name_schedule_syncs.adoc[]
+{% include "../../../../../ROOT/partials/name_schedule_syncs.md" %}

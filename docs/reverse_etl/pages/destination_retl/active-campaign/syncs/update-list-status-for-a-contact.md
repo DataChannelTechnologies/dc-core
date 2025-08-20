@@ -33,4 +33,4 @@ Data Model::Select a Data Model from the drop-down.
 | Incremental Key | *Dependant* <br> *Required (If Fetch Mode = Incremental)* <br> Choose the field which will serve as Incremental key. | Select Incremental Key |
 
 ## Scheduling Syncs
-include::ROOT:partial$name_schedule_syncs.adoc[]
+{% include "../../../../../ROOT/partials/name_schedule_syncs.md" %}
