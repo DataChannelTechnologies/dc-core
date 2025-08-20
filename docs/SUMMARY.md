@@ -11,7 +11,7 @@
     * [Redshift](destinations/pages/redshift.md)
     * [Snowflake](destinations/pages/snowflake.md)
 
-* Data Sources
+* [Data Sources](applications/pages/index.md)
     * [Cloud Applications](applications/pages/cloud_application/index.md)
         * [Active Campaign](applications/pages/cloud_application/active-campaign/index.md)
             * [Setup](applications/pages/cloud_application/active-campaign/setup.md)
@@ -20,9 +20,19 @@
                 * [Accounts](applications/pages/cloud_application/active-campaign/pipelines/accounts.md)
                 * [Contacts](applications/pages/cloud_application/active-campaign/pipelines/contacts.md)
 
-* [Set-up](set-up/README.md)
+* [Reverse ETL](reverse_etl/pages/index.md)
+    * [Data Models](reverse_etl/pages/data_model.md)
+    * [Data Destinations](reverse_etl/pages/destination_retl/index.md)
+        * [Active Campaign](reverse_etl/pages/destination_retl/active-campaign/index.md)
+            * [Setup](reverse_etl/pages/destination_retl/active-campaign/setup.md)
+            * [Syncs](areverse_etl/pages/destination_retl/active-campaign/syncs.md)
+                * [Account Contact Association](reverse_etl/pages/destination_retl/active-campaign/syncs/account-contact-association.md)
+                * [Accounts](reverse_etl/pages/destination_retl/active-campaign/syncs/accounts.md)
+                * [Contacts](reverse_etl/pages/destination_retl/active-campaign/syncs/contacts.md)
+                * [Update List Status For A Contact](reverse_etl/pages/destination_retl/active-campaign/syncs/update-list-status-for-a-contact.md)
+
+* [Set-up](set-up/pages/index.md)
     * [Authentication](set-up/pages/authentication.md)
-    * [Index](set-up/pages/index.md)
     * [Naming](set-up/pages/naming.md)
     * [Naming Syncs](set-up/pages/naming_syncs.md)
     * [Scheduling](set-up/pages/scheduling.md)
