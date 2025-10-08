@@ -1,3 +1,7 @@
+---
+title: name_schedule_syncs
+---
+
 # Data Sync Scheduling
 
 Set the schedule for the sync to run. Detailed explanation on scheduling of syncs can be found [here](set-up/scheduling_syncs.adoc)
