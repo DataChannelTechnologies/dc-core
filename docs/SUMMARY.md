@@ -1,10 +1,8 @@
 # Table of contents
 
-* [Page 1](README.md)
-
 ## Destinations
 
-* [Warehouses](destinations/pages/README.md)
+* [Warehouses](README.md)
   * [BigQuery](destinations/pages/bigquery.md)
   * [Azure Synapse](destinations/pages/azure-synapse.md)
   * [My Sql](destinations/pages/mysql.md)
@@ -34,3 +32,18 @@
   * [Naming Syncs](set-up/pages/naming_syncs.md)
   * [Scheduling](set-up/pages/scheduling.md)
   * [Scheduling Syncs](set-up/pages/scheduling_syncs.md)
+
+***
+
+* [Page 1](page-1.md)
+
+## Warehouses
+
+* [Warehouses](warehouses/warehouses/README.md)
+  * [BigQuery](warehouses/warehouses/bigquery/README.md)
+    * [Add New DataWarehouse](warehouses/warehouses/bigquery/add-new-datawarehouse/README.md)
+      * [Self Managed BigQuery](warehouses/warehouses/bigquery/add-new-datawarehouse/self-managed-bigquery.md)
+      * [DC Managed BigQuery](warehouses/warehouses/bigquery/add-new-datawarehouse/dc-managed-bigquery.md)
+  * [Redshift](warehouses/warehouses/redshift/README.md)
+    * [Prerequisites for connecting your Redshift Cluster](warehouses/warehouses/redshift/prerequisites-for-connecting-your-redshift-cluster.md)
+    * [Add New Data Warehouse](warehouses/warehouses/redshift/add-new-data-warehouse.md)
