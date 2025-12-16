@@ -22,19 +22,19 @@ In case you wish to use this platform to host your data that you are aggregating
 You’ll be needing certain Google BigQuery details when configuring your Data Warehouse at DataChannel:
 
 1. Go to the Welcome page in the Google Cloud console.
-2. From the project picker at the top of the page, select your project. ![Google Cloud Console Dashboard](../images/google-cloud-console-dashboard.png)
+2. From the project picker at the top of the page, select your project. ![Google Cloud Console Dashboard](../../.gitbook/assets/google-cloud-console-dashboard.png)
 3. The _project name_, _project number_ and _project ID_ appear after the Welcome heading.
 4. In the Google Cloud console, go to the Cloud Storage Buckets page.
 5. In the bucket list, click the name of the bucket whose metadata you want to view.
-6. You can now view bucket details such as the _bucket name_, _bucket location_ etc. ![GCS Bucket Details](../images/gcs-bucket-details.png)
+6. You can now view bucket details such as the _bucket name_, _bucket location_ etc. ![GCS Bucket Details](../../.gitbook/assets/gcs-bucket-details.png)
 7. In the Explorer pane, expand your project and select a dataset.
-8. In the Details panel, you can view the dataset such as _Dataset ID_, _Dataset name_, _Dataset location_ etc. ![GCS Dataset Details](../images/gcs-dataset-details.png)
+8. In the Details panel, you can view the dataset such as _Dataset ID_, _Dataset name_, _Dataset location_ etc. ![GCS Dataset Details](../../.gitbook/assets/gcs-dataset-details.png)
 
 ### Permissions
 
 DataChannel will need certain permissions to access your projects, folders and objects in order to write to/ edit them when connecting using pipelines / syncs. Since you are the owner/administrator of your BigQuery Warehouse, you will need to manage access to your resources. You can do this by either of the two ways:
 
-![Big Query Permissions](../images/big-query-permissions-6.png)
+![Big Query Permissions](../../.gitbook/assets/big-query-permissions-6.png)
 
 * _Option 1:_ Grant the following roles to the DataChannel Principal:
   * BigQuery Data Editor
@@ -59,23 +59,23 @@ The following permissions are needed by DataChannel. What each permission implie
 
 ### _Step By Step Guide for adding a new BigQuery Data warehouse to your DataChannel Account_
 
-**Step 1:** Click on the Data Warehouses tab in the left side bar navigation to reach the Data Warehouses Module as shown below. ![Data Warehouses Module](../images/destinations-1.png)
+**Step 1:** Click on the Data Warehouses tab in the left side bar navigation to reach the Data Warehouses Module as shown below. ![Data Warehouses Module](../../.gitbook/assets/destinations-1.png)
 
 **Step 2:** Click on **Add New** to add a new Data Warehouse to your account.
 
-**Step 3:** Select _**BigQuery**_ from the listed Warehouse options. ![Select BigQuery](../images/destinations-bq-step3.png)
+**Step 3:** Select _**BigQuery**_ from the listed Warehouse options. ![Select BigQuery](../../.gitbook/assets/destinations-bq-step3.png)
 
-**Step 4:** You may choose to opt for a DataChannel Managed warehouse. ![DataChannel Managed BQ](../images/dc-managed-bq-1.png)
+**Step 4:** You may choose to opt for a DataChannel Managed warehouse. ![DataChannel Managed BQ](../../.gitbook/assets/dc-managed-bq-1.png)
 
 **Step 5:** Else, you may choose to connect your own warehouse. You would need to have credentials ready to connect your data warehouse.
 
-![Connect Own Warehouse](../images/destinations-bq-own.png)
+![Connect Own Warehouse](../../.gitbook/assets/destinations-bq-own.png)
 
 #### Option 1 : Adding your own BigQuery Data warehouse to your DataChannel Account
 
-**Step 6:** Add the given email to your google cloud account and ensure that you have granted the permissions listed. Click on **Next**. ![Permissions](../images/destinations-bq-permissions.png)
+**Step 6:** Add the given email to your google cloud account and ensure that you have granted the permissions listed. Click on **Next**. ![Permissions](../../.gitbook/assets/destinations-bq-permissions.png)
 
-**Step 7:** Enter the details for your BigQuery Dataset in the form and click on **Validate Configuration** to add the warehouse. An explanation of each of the fields in the form is given in the table below. Refer to the presetup documentation above to know how to get this information for your project. ![BigQuery Dataset Details](../images/destinations-bq-step7.png)
+**Step 7:** Enter the details for your BigQuery Dataset in the form and click on **Validate Configuration** to add the warehouse. An explanation of each of the fields in the form is given in the table below. Refer to the presetup documentation above to know how to get this information for your project. ![BigQuery Dataset Details](../../.gitbook/assets/destinations-bq-step7.png)
 
 | Field                        | Description                                                                                                                                                                                                                                                                                                                                        |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -92,4 +92,4 @@ The following permissions are needed by DataChannel. What each permission implie
 
 #### Option 2: Adding a DataChannel Managed BigQuery Data warehouse to your DataChannel Account
 
-**Step 6:** In case you choose that DataChannel manage a BigQuery warehouse for you, the process to add a DataChannel managed warehouse is very simple. Just fill in your Google Account email and Region and click on **save**. ![DataChannel Managed BQ](../images/destinations-bq-dc.png)
+**Step 6:** In case you choose that DataChannel manage a BigQuery warehouse for you, the process to add a DataChannel managed warehouse is very simple. Just fill in your Google Account email and Region and click on **save**. ![DataChannel Managed BQ](../../.gitbook/assets/destinations-bq-dc.png)

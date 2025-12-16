@@ -1,4 +1,4 @@
-# Pipeline Setup
+# Set-up
 
 In today's day and age, companies are using a wide range of cloud / SaaS-based software/services. The data that these software services provide can offer much more insight than what you can access on their internal dashboards. Combining this data with your internal data can open new avenues for generating insights.
 
@@ -17,7 +17,7 @@ DataChannel has pre-built connectors for various API Cloud Applications. For a f
 
 3. Start creating your data pipelines by clicking on **+ Data Pipeline** as shown below.
 
-![Data Source Detail](../images/data-source-detail-4.png)
+![Data Source Detail](<../../.gitbook/assets/data-source-detail-4 (1).png>)
 
 4. For each pipeline that you create, a table is created in the destination data warehouse selected by you. The table name is always the name given by you to the data-pipeline, prefixed by a standard prefix which differs from data-source to data-source. For example, all data-pipelines created for Facebook ads will start with the prefix `fb_`, and those for Google Sheets will start with `gs_`.
 

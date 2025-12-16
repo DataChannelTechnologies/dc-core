@@ -1,91 +1,114 @@
 # Redshift
 
-**Experimental**
+You can connect your Amazon Redshift data warehouse to DataChannel by providing a few essential configuration details. This guide walks you through each required setting step by step, including authentication and S3 credentials used for data operations.
 
-## Introduction
+#### ✍️ Getting Started <a href="#getting-started" id="getting-started"></a>
 
-Amazon Redshift is one of the most popular, scalable, easy to manage data warehouse options for those wanting to setup a Data Warehouse on the cloud. Read more about the features and how to get started with the popular platform from AWS [here](https://docs.aws.amazon.com/redshift/index.html).
+To connect Redshift, you’ll need:
 
-In case you wish to use this platform to host your data that you are aggregating using DataChannel, you can either setup a cluster of your own or use a DataChannel Managed Redshift Warehouse. This document will show you how you can connect / provision a Redshift based warehouse in minutes using the DataChannel Platform.
+* Redshift **host**, **port**, **database**, and **schema**
+* One of two authentication methods:
+  * **Standard Username/Password**
+  * **IAM-based AWS Credentials**
+* S3 credentials and location for Redshift data load/unload operations
 
-## Self Managed Redshift Cluster
+#### 🛠 Connection Details <a href="#connection-details" id="connection-details"></a>
 
-**Prerequisites for connecting your Redshift Cluster**
+Let’s walk through what you need to provide:
 
-* If you don't already have an AWS account, create and activate an AWS account. Set up your data warehouse with AWS Redshift. The AWS Redshift console will allow you to create and manage your Redshift resources.
-* Connect to your AWS Redshift as an admin user ( Or any user which has permissions to create databases, users and schemas). Using the AWS Redshift console you can launch query editor v2 by clicking on the Query data button. The query editor v2 connects from your client machine to the AWS Redshift environment. You need to create a database to be used for DataChannel by running this query:
+**1. Name**
 
-```sql
-create database <DATABASE_NAME>;
-```
+Pick a unique name for this Redshift source. This helps you identify the source later if you have multiple Redshift or other database connections.\
+**Examples:** prod-redshift-west, team-finance-redshift
 
-Substitute the placeholder in the above query with the desired _Database name_. You may choose any name for your Database but keep in mind that the Database name should be 1-64 characters. Valid characters are lowercase alphanumeric characters. This database is where DataChannel will actually create tables, load data, and run queries.
+> ⚠️ The name **must be unique** for each warehouse you add.
 
-If you don’t have access to query editor v2, you can use any database client ( E.g Dbeaver) to connect to your redshift and run the same queries.
+**2. Host**
 
-* By default, only the admin user that you created when you created your AWS Account has access to the resources that you have created. Thus, to grant DataChannel access to your resources you will need to create a new user. At the time of creating a new DataChannel user, you will need to specify a name and a password for this new user. The password for the user must have 8–64 characters, and it must include at least one uppercase letter, one lowercase letter, and one numeral. A database comprises one or more schemas which contain tables and other database objects. Schemas help to organize database objects into logical groups so that their management becomes easier. So, on running this query using the Query Editor v2/ your Database Client, you can connect to this database and create a new user and schema.Substitute the placeholder in the above query with the desired Database name.
+Enter the hostname of your Redshift cluster. It usually looks like: _redshift-cluster-1.abc123xyz.us-west-2.redshift.amazonaws.com_
 
-```sql
-create user <USERNAME> password '<PASSWORD>';
-create schema <SCHEMA_NAME> authorization <USERNAME>; # This will create and give ownership of the schema to this user
-```
+**3. Port**
 
-Substitute the placeholders in the above query with the desired _Username_, _password_ and _Schema name_. Please make a note of these as you will require them when configuring your warehouse with DataChannel.
+Redshift uses port 5439 by default. Change this only if your Redshift cluster uses a different port.
 
-* Ensure that you've created an S3 bucket in your AWS Redshift Warehouse. You can use the following steps to create an Amazon S3 Bucket. 1. Use your AWS account's _email address_ and _password_ to Sign in to your AWS Management Console.
+**4. Database**
 
-2. Open the Console _Home_ page.
-3. In the Services search Box, search for S3. 4. From the search results, select _S3_. 5. Choose Buckets from the Amazon S3 menu in the left navigation pane and then choose the Create bucket button.
-4. Enter a _name_ for your bucket. 7. Select the _AWS Region_ where you would like your bucket to be created.
-5. You may choose to enable or disable Bucket Versioning.
-6. Navigate to the bottom of the page and click on Create bucket.
+Provide the name of the Redshift database you want to connect to. Example: _analytics\_db_
 
-Please make a note of the S3 bucket name and region as you will need them later.
+**5. Schema**
 
-* To grant DataChannel access to your S3 bucket, you will need to create an IAM role with appropriate permissions. Refer AWS documentation [here](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-create-an-iam-role.html) to learn how to create and manage your IAM Role.
+Specify the schema inside your database that contains your data. Example: _public, sales, marketing\_data_
 
-**Tips**
+**6. Connection Timeout (Optional)**
 
-* It is recommended to create a new schema for DataChannel in your database.
-* Ensure that the S3 bucket name and region are correct as they will be used later during the configuration process.
+This is the time (in seconds) that the system will wait while trying to connect before giving up. If you’re unsure, stick with the default: **60 seconds.**
 
-## Step By Step Guide
+**7. Use Reverse SSH Tunnel (Optional)**
 
-Step 1: Click on Data Warehouses tab in the left side bar navigation to reach the Data Warehouses Module.
+Enable this option if your Redshift cluster is not publicly accessible and must be reached through a reverse SSH tunnel.
 
-![Data Warehouses Module](../images/destinations-1.png)
+\- Default: \*\*Disabled\*\*
 
-Step 2: Click on Add New to add a new Data Warehouse to your account.
+Turn this on only if your infrastructure requires SSH-based access.
 
-Step 3: Select _Redshift_ from the listed Warehouse options.
+#### 🔐 Choose Your Authentication Method <a href="#choose-your-authentication-method" id="choose-your-authentication-method"></a>
 
-![Select Redshift](../images/destinations-rs-step3.png)
+You can authenticate using either:
 
-Step 4: You may choose to opt for a DataChannel Managed warehouse.
+* Standard username & password
+* AWS IAM credentials
 
-![DataChannel Managed Redshift](../images/dc-managed-rs-1.png)
+Select one based on your setup and security requirements.
 
-Step 5: Else, you may choose to connect your own warehouse. You would need to have credentials ready to connect your data warehouse.
+**✅ Option 1: Standard Authentication**
 
-![Connect Own Warehouse](../images/destinations-rs-own.png)
+Use this method if you connect to Redshift using a database username and password.
 
-### Option 1 : Adding your own Redshift Data warehouse to your DataChannel Account
+You’ll need to provide:
 
-Step 6: Enter the details for your AWS Redshift and S3 Bucket in the form and click on Validate Configuration to add the warehouse. An explanation of each of the fields in the form is given in the table below.
+* **Username**: Your Redshift database user\
+  Example: _readonly\_user_
+* **Password**: The password for that user\
+  🔒 The password is securely masked in the UI.
 
-| Field              | Description                                                                                                                                                                                                                                                                                                                        |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Name               | Provide a name for your warehouse. It needs to be unique across your account.                                                                                                                                                                                                                                                      |
-| Host               | Provide the hostname or end-point for the cluster.                                                                                                                                                                                                                                                                                 |
-| Username           | Provide a username which will be used to create the tables and load data. This user needs to have all rights on the schema that you intend to use. In case you are creating a dedicated schema for the data from DataChannel (which is recommended), then this user can be the schema owner.                                       |
-| Password           | Provide the password for the load user.                                                                                                                                                                                                                                                                                            |
-| Select Users       | Comma separated list of users who should get select rights on tables created by DataChannel using the schema and username specified by you.                                                                                                                                                                                        |
-| Port               | Provide the port number for your cluster. The default value for this is 5439 unless you have changed it while creating your redshift cluster.                                                                                                                                                                                      |
-| DB Name            | Provide the name of the database you have created in your cluster.                                                                                                                                                                                                                                                                 |
-| Schema Name        | Provide the database schema where DataChannel should push the data. As mentioned above, it is recommended to create a new schema for DataChannel in your database.                                                                                                                                                                 |
-| Use DataChannel S3 | Leave this toggle off so that you can specify your own S3 bucket.                                                                                                                                                                                                                                                                  |
-| AWS Location       | Provide the AWS region where your S3 bucket has been created. This should typically be same as the region in which your Redshift cluster is hosted. Example `us-east-1`                                                                                                                                                            |
-| Bucket Name        | Provide name of the S3 bucket where DataChannel should copy files before loading them into your Redshift instance. Note that DataChannel does not remove the files after they have been copied into Redshift so it is advisable to use life cycle properties to manage the removal / archival of the raw files to manage S3 costs. |
-| Access Key         | Provide the access key required to access the S3 bucket using the API. Refer AWS documentation [here](https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html) to learn how to manage your access keys.                                                                                                  |
-| Secret Key         | Provide the secret key required to access the S3 bucket using the API. Refer AWS documentation [here](https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html) to learn how to manage your secret keys.                                                                                                  |
-| IAM Role           | Provide the IAM role required to access the S3 bucket using the API. Refer AWS documentation [here](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-create-an-iam-role.html) to learn how to create and manage your IAM Role.                                                                                               |
+**🛡️ Option 2: IAM Credentials Authentication**
+
+Use this if you want to authenticate using AWS IAM. This method is recommended for production environments and provides better access control.\
+You’ll need:
+
+* **Cluster ID**: The actual Redshift cluster ID—not the host.\
+  Example: _redshift-cluster-1_
+* **Region**: The AWS region where your Redshift cluster is hosted\
+  Example: _us-west-2_
+* **Database User:** The database user to connect as  - Default: _awsuser_
+* **Access Key ID (Optional):** The AWS access key used for IAM role assumption\
+  Will be securely hidden in the UI.
+* **Secret Access Key (Optional):** The corresponding secret key\
+  Also hidden in the UI for security
+
+> ℹ️ DataChannel assumes an IAM role using these credentials. Ensure the IAM user or role has the required permissions to access Redshift.
+
+### ☁️ S3 Credentials (Required)
+
+Redshift uses Amazon S3 for data operations such as UNLOAD and COPY. DataChannel requires S3 credentials and location details to support these operations.
+
+#### S3 Region
+
+The AWS region where your S3 bucket is located.
+
+* Default: us-east-1
+
+#### S3 Bucket
+
+The name of the S3 bucket used for Redshift data operations.\
+Example: dc-redshift-staging-bucket
+
+#### S3 Access Key
+
+The AWS access key for the S3 account used by Redshift.\
+This value is securely masked in the UI.
+
+#### S3 Secret Key
+
+The corresponding AWS secret key.\
+This value is also securely masked.

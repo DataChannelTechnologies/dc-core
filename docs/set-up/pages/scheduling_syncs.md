@@ -1,4 +1,4 @@
-# Scheduling & Running Data sync
+# Scheduling Syncs
 
 ## Concepts
 
@@ -8,9 +8,9 @@ DataChannel offers three modes of running / executing your data sync. The most c
 
 In order to run a sync only when needed, you can set its schedule to Manual Run only as shown in the image below.
 
-![alt](../images/manualrun_reverseetl.png)
+![alt](../../.gitbook/assets/manualrun_reverseetl.png)
 
-![alt](../images/manualrun-2_reverseetl.png)
+![alt](../../.gitbook/assets/manualrun-2_reverseetl.png)
 
 ## Scheduled Run
 
@@ -18,8 +18,8 @@ In order for a sync to run on schedule, you can set its schedule during the sync
 
 There are two options for scheduling a sync:
 
-* [Normal](#normal-scheduling)
-* [Advanced](#advanced-scheduling)
+* [Normal](scheduling_syncs.md#normal-scheduling)
+* [Advanced](scheduling_syncs.md#advanced-scheduling)
 
 ### Normal Scheduling
 
@@ -27,10 +27,10 @@ This scheduling options requires you to select a frequency for running the sync 
 
 **NOTE:** The time differential for the first scheduled run will be calculated from the time of creation of the sync. For example a sync created at 1000 with a schedule of running every two hours will start its first scheduled run at 1200.
 
-![alt](../images/manual_hour_reverseetl.png)
+![alt](../../.gitbook/assets/manual_hour_reverseetl.png)
 
 ### Advanced Scheduling
 
 The advanced scheduling option gives you a fine grained control over when to run your sync including the time it needs to start its first run. Ref image below for details.
 
-![alt](../images/advancedrun_reverseetl.png)
+![alt](../../.gitbook/assets/advancedrun_reverseetl.png)

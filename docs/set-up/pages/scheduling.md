@@ -1,4 +1,4 @@
-# Scheduling & Running Data Pipelines
+# Scheduling
 
 ## Concepts
 
@@ -8,12 +8,11 @@ DataChannel offers three modes of running / executing your Data Pipelines. The m
 
 In order to run a pipeline only when needed, you can set its schedule to Manual Run only as shown in the image below.
 
-![pipeline-sched-manual](../images/pipeline-sched-manual.png)
+![pipeline-sched-manual](../../.gitbook/assets/pipeline-sched-manual.png)
 
 There are three possible ways in which you can trigger a manual run of a pipeline anytime you choose. These are by clicking the run now button on the report details page, or in the actions column of the pipeline listing section of the Home page / Data Sources page. These are shown in the images below.
 
-![pipeline-run-manual-1](../images/pipeline-run-manual-1.png)
-![pipeline-run-manual-2](../images/pipeline-run-manual-2.png)
+![pipeline-run-manual-1](../../.gitbook/assets/pipeline-run-manual-1.png) ![pipeline-run-manual-2](../../.gitbook/assets/pipeline-run-manual-2.png)
 
 ## Scheduled Run
 
@@ -21,8 +20,8 @@ In order for a pipeline to run on schedule, you can set its schedule during the 
 
 There are two options for scheduling a pipeline:-
 
-* [Normal](#normal-scheduling)
-* [Advanced](#advanced-scheduling)
+* [Normal](scheduling.md#normal-scheduling)
+* [Advanced](scheduling.md#advanced-scheduling)
 
 ### Normal Scheduling
 
@@ -30,14 +29,13 @@ This scheduling options requires you to select a frequency for running the pipel
 
 **NOTE:** The time differential for the first scheduled run will be calculated from the time of creation of the pipeline. For example a pipeline created at 1000 with a schedule of running every two hours will start its first scheduled run at 1200.
 
-![pipeline-sched-normal](../images/pipeline-sched-normal.png)
+![pipeline-sched-normal](../../.gitbook/assets/pipeline-sched-normal.png)
 
 ### Advanced Scheduling
 
 The advanced scheduling option gives you a fine grained control over when to run your pipelines including the time it needs to start its first run. Ref image below for details.
 
-![pipeline-sched-advanced](../images/pipeline-sched-advanced.png)
-![hour_scheduling](../images/hour_scheduling.PNG)
+![pipeline-sched-advanced](../../.gitbook/assets/pipeline-sched-advanced.png) ![hour\_scheduling](../../.gitbook/assets/hour_scheduling.PNG)
 
 ## Backfill
 
@@ -50,4 +48,4 @@ In order to trigger a backfill run follow these steps
 1. Go to the report details page and click on the **Backfill** tab.
 2. Select your date range and click on **Run** to start the run.
 
-![pipeline-run-backfill](../images/pipeline-run-backfill.png)
+![pipeline-run-backfill](../../.gitbook/assets/pipeline-run-backfill.png)

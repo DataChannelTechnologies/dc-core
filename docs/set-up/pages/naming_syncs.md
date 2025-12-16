@@ -1,4 +1,4 @@
-# Naming & Saving Data syncs
+# Naming Syncs
 
 **Experimental**
 
@@ -8,4 +8,4 @@ It is important to choose a proper descriptive name for the sync as this would a
 
 > **Note:** > - You can not start a sync name with digits > - It can only contain alphanumeric characters and underscores
 
-![alt](../images/naming_reverseetl.png)
+![alt](../../.gitbook/assets/naming_reverseetl.png)
