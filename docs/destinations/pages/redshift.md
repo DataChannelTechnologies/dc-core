@@ -2,7 +2,7 @@
 
 You can connect your Amazon Redshift data warehouse to DataChannel by providing a few essential configuration details. This guide walks you through each required setting step by step, including authentication and S3 credentials used for data operations.
 
-#### ✍️ Getting Started <a href="#getting-started" id="getting-started"></a>
+### ✍️ Getting Started
 
 To connect Redshift, you’ll need:
 
@@ -12,20 +12,26 @@ To connect Redshift, you’ll need:
   * **IAM-based AWS Credentials**
 * S3 credentials and location for Redshift data load/unload operations
 
-#### 🛠 Connection Details <a href="#connection-details" id="connection-details"></a>
+### 🛠 Connection Details
 
-Let’s walk through what you need to provide:
+Below are the details required to configure a Redshift connection.
 
-**1. Name**
+#### 1. Name
 
-Pick a unique name for this Redshift source. This helps you identify the source later if you have multiple Redshift or other database connections.\
-**Examples:** prod-redshift-west, team-finance-redshift
+Choose a unique name for this Redshift data warehouse configuration.
+
+This helps you identify the source later if you have multiple Redshift or other data warehouse connections.
+
+Examples:\
+prod-redshift-west\
+team-finance-redshift
 
 > ⚠️ The name **must be unique** for each warehouse you add.
 
 **2. Host**
 
-Enter the hostname of your Redshift cluster. It usually looks like: _redshift-cluster-1.abc123xyz.us-west-2.redshift.amazonaws.com_
+Enter the hostname of your Redshift cluster.\
+It typically looks like: redshift-cluster-1.abc123xyz.us-west-2.redshift.amazonaws.com
 
 **3. Port**
 
@@ -47,11 +53,11 @@ This is the time (in seconds) that the system will wait while trying to connect 
 
 Enable this option if your Redshift cluster is not publicly accessible and must be reached through a reverse SSH tunnel.
 
-\- Default: \*\*Disabled\*\*
+* Default: \*\*Disabled\*\*
 
 Turn this on only if your infrastructure requires SSH-based access.
 
-#### 🔐 Choose Your Authentication Method <a href="#choose-your-authentication-method" id="choose-your-authentication-method"></a>
+### 🔐 Choose Your Authentication Method <a href="#choose-your-authentication-method" id="choose-your-authentication-method"></a>
 
 You can authenticate using either:
 
@@ -60,7 +66,7 @@ You can authenticate using either:
 
 Select one based on your setup and security requirements.
 
-**✅ Option 1: Standard Authentication**
+#### **✅ Option 1: Standard Authentication**
 
 Use this method if you connect to Redshift using a database username and password.
 
@@ -71,7 +77,7 @@ You’ll need to provide:
 * **Password**: The password for that user\
   🔒 The password is securely masked in the UI.
 
-**🛡️ Option 2: IAM Credentials Authentication**
+#### **🛡️ Option 2: IAM Credentials Authentication**
 
 Use this if you want to authenticate using AWS IAM. This method is recommended for production environments and provides better access control.\
 You’ll need:
