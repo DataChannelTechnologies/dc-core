@@ -20,7 +20,7 @@ Below are the details required to configure a Redshift connection.
 
 Choose a unique name for this Redshift data warehouse configuration.
 
-This helps you identify the source later if you have multiple Redshift or other data warehouse connections.
+This helps you identify the warehouse later if you have multiple Redshift or other data warehouse connections.
 
 Examples:\
 prod-redshift-west\
@@ -53,16 +53,16 @@ This is the time (in seconds) that the system will wait while trying to connect 
 
 Enable this option if your Redshift cluster is not publicly accessible and must be reached through a reverse SSH tunnel.
 
-* Default: \*\*Disabled\*\*
+* Default: _Disabled_
 
 Turn this on only if your infrastructure requires SSH-based access.
 
-### 🔐 Choose Your Authentication Method <a href="#choose-your-authentication-method" id="choose-your-authentication-method"></a>
+### 🔐 Choose Your Authentication Method
 
 You can authenticate using either:
 
-* Standard username & password
-* AWS IAM credentials
+* Standard Authentication
+* IAM Credentials Authentication
 
 Select one based on your setup and security requirements.
 
