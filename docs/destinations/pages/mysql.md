@@ -1,55 +1,99 @@
-# My Sql
+# MySQL
 
-## Introduction
+You can connect your MySQL database to DataChannel using a small set of connection details and credentials. This guide walks you through the setup step by step—whether you’re using a standard username/password login or secure SSL-based authentication.
 
-MySQL is an open-source relational database management system (RDBMS). It organizes data into one or more data tables in which data types may be related to each other; these relations help structure the data. MySQL works with an operating system to implement a relational database in a computer's storage system, manages users, allows for network access and facilitates testing database integrity and creation of backups.
+### ✍️ Getting Started
 
-Read more about its features and how to get started with the popular platform [here](https://dev.mysql.com/doc/).
+To connect to a MySQL database, you’ll need:
 
-### To find your MySQL Details
+* Basic connection details like **host, port, database**
+* One of two authentication options:
+  * **Standard Authentication (userame & password)**
+  * **SSL Authentication (certificate-based, recommended for production)**
 
-You’ll be needing certain MySQL details when configuring your Data Warehouse at DataChannel:
+### 🛠 Connection Details
 
-1. Connect to your MySQL admin account by providing a username and a password. If you have connected successfully, you will get a `mysql>` prompt which tells you that mysql is ready for you to enter SQL statements.
-2.  MySQL account names consist of a user name and a host name. _Account name_ syntax is 'user\_name'@'host\_name'. Using the CURRENT\_USER() function returns the _user name_ and _host name_ combination for the MySQL account that the server used to authenticate the current client. The syntax is:
+Here’s what each field means and how to fill it out:
 
-    ```sql
-    mysql> SELECT CURRENT_USER();
-    ```
-3. To connect DataChannel to your MySQL account, you will need to provide the _password_ that you use to access the MySQL Database.
-4.  Alternatively, you may _create a new user_ for DataChannel from your admin account and assign a password to it. The CREATE USER statement creates new MySQL accounts using the following syntax:
+#### 1. Name
 
-    ```sql
-    CREATE USER 'dc_user'@'%.example.com' IDENTIFIED BY 'password';
-    GRANT ALL
-      ON *.*
-      TO 'dc_user'@'%.example.com'
-      WITH GRANT OPTION;
-    ```
+Pick a **unique name** for this MySQL warehouse.\
+This name helps you identify the warehouse later, especially when managing multiple MySQL or other database connections.
 
-    Here you have created a superuser account with the username ‘dc\_user’ with full global privileges to do anything.
-5.  You will need to specify the MySQL _Database Name_ when configuring the warehouse. Use the SHOW statement to list the databases managed by the server.
+Example:\
+&#xNAN;_&#x6D;ysql-prod, user-service-db, team-marketing-mysql_
 
-    ```sql
-    mysql> SHOW DATABASES;
-    ```
-6. MySQL uses _port_ 3306 by default. If you are using any port other than the default port, make sure you specify the correct network port that is configured on the server.
+> ⚠️ This name must be **unique** across all your sources.
 
-## Step By Step Guide
+#### 2. Host
 
-**Step 1:** Click on Data Warehouses tab in the left side bar navigation to reach the Data Warehouses Module as shown below. ![alt](../../.gitbook/assets/destinations-1.png)
+Provide the hostname or IP address of your MySQL server.
 
-**Step 2:** Click on btn:\[Add New] to add an additional Data Warehouse to your account.
+Examples: mysql.internal.company.com, 10.0.0.12
 
-**Step 3:** Select _MySQL_ from the listed Warehouse options. ![alt](../../.gitbook/assets/Choose_MySQL.png)
+If your database is hosted on a cloud provider (AWS RDS, GCP Cloud SQL, Azure Database for MySQL), use the endpoint provided by the service.
 
-**Step 4:** Enter the details about your MySQL in the form and click on btn:\[Save] to add the warehouse. An explanation of each of the fields in the form has been given below. ![alt](../../.gitbook/assets/MySQL_Form.png)
+#### 3. Port
 
-| Field               | Description                                                                                                                                                                                                                                                                                                                                                     |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Data Warehouse Name | <p><em>Required</em><br>Provide a name for your warehouse. It needs to be unique across your account. This can be accessed from the Warehouses Tab.</p>                                                                                                                                                                                                         |
-| Host Name           | <p><em>Required</em><br>Provide a host name for your warehouse. MySQL hostname defines the location where your MySQL database is hosted. You need to specify the MySQL hostname so that DataChannel knows where to connect.</p>                                                                                                                                 |
-| Username            | <p><em>Required</em><br>Provide a username which will be used to create the tables and load data. This user needs to have all rights on the database, datawarehouse(only usage), and the schema you intend to use. In case you are creating a dedicated schema for the data from DataChannel (which is recommended, then this user can be the schema owner.</p> |
-| Password            | <p><em>Required</em><br>Provide the password for the username entered above.</p>                                                                                                                                                                                                                                                                                |
-| Port                | <p><em>Required</em><br>Provide the port number.</p>                                                                                                                                                                                                                                                                                                            |
-| DB Name             | <p><em>Required</em><br>Provide the name of the database you have created in your MySQL instance.</p>                                                                                                                                                                                                                                                           |
+The port used to connect to MySQL server.\
+Default is **3306** — change it only if your server uses a different port.
+
+#### 4. Database
+
+Enter the name of the **database** you want to connect to.\
+Example: _customer\_data, inventory_
+
+### 🔐 Authentication Options
+
+Depending on how your server is configured, you can choose between:
+
+#### ✅ Option 1: Standard Authentication
+
+Use this if your database uses a username and password for login.
+
+You’ll need:
+
+*   **Username**: The username you use to access MySQL
+
+    Example: _readonly\_user_
+*   **Password**: The corresponding password
+
+    This will be securely masked in the UI.
+
+#### 🔒 Option 2: SSL Authentication
+
+Use this if your server requires SSL certificate-based authentication for enhanced security.
+
+You’ll need:
+
+* **Username:** Your MySQL login name
+* **Password:** The corresponding password for the user
+*   **SSL Root Certificate (ssl\_ca)**
+
+    The contents of the root CA certificate (ca.pem)
+
+    This is used to verify the identity of the MySQL server.
+*   **SSL Client Certificate (ssl\_cert)**
+
+    Your client certificate (client-cert.pem)
+
+    This identifies the client during the SSL handshake.
+*   **SSL Client Key (ssl\_key)**
+
+    Your private key (client-key.pem) corresponding to the client certificate.<br>
+
+    🔐 Certificate requirements:
+
+    * All certificates must be in PEM format
+    * Paste the full contents of each file, including:
+      * \-----BEGIN CERTIFICATE-----
+      * \-----END CERTIFICATE-----
+* The private key must match the provided client certificate
+
+✅ Final Notes
+
+* Make sure the MySQL user has sufficient permissions to access the selected database.
+* If SSL is enabled on the server, Standard Authentication without certificates may fail.
+* Network-level access (VPC peering, IP allowlists, firewalls) must allow DataChannel to reach the MySQL host.
+
+Once configured, DataChannel will validate the connection and make your MySQL warehouse available for querying and analysis.

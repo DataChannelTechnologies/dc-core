@@ -5,7 +5,7 @@
 * [Warehouses](README.md)
   * [BigQuery](destinations/pages/bigquery.md)
   * [Azure Synapse](destinations/pages/azure-synapse.md)
-  * [My Sql](destinations/pages/mysql.md)
+  * [MySQL](destinations/pages/mysql.md)
   * [Redshift](destinations/pages/redshift.md)
   * [Snowflake](destinations/pages/snowflake.md)
 * [Data Sources](applications/pages/index.md)
