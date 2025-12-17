@@ -1,78 +1,120 @@
 # Snowflake
 
-## Introduction
+To connect your Snowflake data warehouse to DataChannel, you’ll need a few essential details like your account name, database, and authentication credentials.
 
-Snowflake enables data storage, processing, and analytics solutions that are flexible, fast, and easy to use. It was not built on any existing database technology or “big data” software platforms such as Hadoop. Instead, Snowflake combines a completely new SQL query engine with an innovative architecture natively designed for the cloud.
+### ✍️ Getting Started
 
-Read more about its features and how to get started with the popular platform [here](https://docs.snowflake.com/en/user-guide.html).
+To connect to Snowflake, you’ll need to fill in:
 
-This document will show you how you can connect / provision a Snowflake based warehouse in minutes using the DataChannel Platform.
+* Your **account**, **warehouse**, **database**, and **schema**
+* An authentication method:
+  * **Standard (Username & Password)**
+  * **Key Pair Authentication** (for enhanced security)
 
-> **Prerequisites for connecting your Snowflake Cluster**
->
-> * Create a Snowflake Cluster with adequate capacity to be able to store the volume of data you anticipate storing.
+### 🛠 Connection Details
 
-### To find your Snowflake Details
+Here’s what each field means and how to fill it out:
 
-You’ll be needing certain Snowflake details when configuring your Data Warehouse at DataChannel:
+#### 1. Name
 
-1. Before you can execute SQL statements you must sign into a Snowflake account.
-2. In a supported web browser, navigate to [https://app.snowflake.com](https://app.snowflake.com).
-3. You can sign into Snowflake using your _Snowflake account name_ and your Snowflake account credentials (_username_, and _password_).
-4.  You can view the account name in the URLs for accessing any of the Snowflake web interfaces. The URL for an account uses the following format:
+Give this source a unique name so you can easily identify it later.
 
-    ```
-    https://<account_name>.snowflakecomputing.com.
-    ```
-5.  You can write the following SQL queries using the Worksheets page on the Snowflake web interface:
+Example: _snowflake-prod, marketing-snowflake, team-analytics-wh_
 
-    ```sql
-    SHOW WAREHOUSES;
-    SHOW DATABASES;
-    SHOW SCHEMAS;
-    SHOW STAGES;
-    ```
+> ⚠️ This name must be unique across all sources you configure.
 
-    In the query results you will see the lists of all the warehouses,databases, schemas and stages for which you have access privileges, across your entire account. Please make a note of the details of all the resources that you would like to be accessed by DataChannel.
-6. Alternatively , these details about database name, schema name and stage name are also visible to you from the Snowflake web interface. To know more refer [Snowflake documentation](https://docs.snowflake.com/en/user-guide/ui-snowsight-quick-tour#data-pages).
-   *   If you use the classic Snowflake Console the _warehouse name_, _database name_, _schema name_ and _stage name_ details are visible near the top right corner of the screen as shown below:
+#### 2. Account
 
-       ![Snowflake Classic Console](../../.gitbook/assets/snowflake-classic-console.png)
-   *   If you use the Snowsight web interface the _warehouse name_, _database name_, _schema name_ and _stage name_ details are visible from the _Data_ menu as shown below:
+Provide your **Snowflake account identifier**. This usually looks like: _your\_org-account\_name_\
+or\
+&#xNAN;_&#x78;yz12345.us-east-1_
 
-       ![Snowflake Snowsight](../../.gitbook/assets/snowflake-snowsight.png)
+Check your Snowflake URL—it’s usually the part before .snowflakecomputing.com.
 
-## Step By Step Guide
+#### 3. Warehouse
 
-**Step 1:**
+This is the compute resource that runs your queries.\
+Specify the warehouse you want to use for this connection.\
+Example: _COMPUTE\_WH_, _ANALYTICS\_WH_
 
-Click on Data Warehouses tab in the left side bar navigation to reach the Data Warehouses Module as shown below.
+#### 4. Database
 
-![Destinations 1](../../.gitbook/assets/destinations-1.png)
+Enter the **database name** where your data resides.\
+Example: _sales\_data, customer\_360, internal\_metrics_
 
-**Step 2:**
+#### 5. Schema Name
 
-Click on **Add New** to add an additional Data Warehouse to your account.
+Specify the schema inside the selected database.
 
-**Step 3:**
+Examples: public, analytics
 
-Select _Snowflake_ from the listed Warehouse options.
+#### 6. Stage Name
 
-![Choose Snowflake](../../.gitbook/assets/Choose_Snowflake.png)
+Provide the name of the Snowflake stage used for data loading operations.
 
-**Step 4:**
+This stage must already exist and be accessible to the selected user.
 
-Enter the details about your Snowflake cluster in the form and click on **Save** to add the warehouse. An explanation of each of the fields in the form has been given below.
+Examples: internal\_stage, datacontainer\_stage
 
-![Snowflake Form](../../.gitbook/assets/Snowflake_Form.png)
+### 🔐 Choose Your Authentication Method
 
-| Field                | Description                                                                                                                                                                                                                                                                                                                                                      |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Name                 | <p><em>Required</em><br>Provide a name for your warehouse. It needs to be unique across your account.</p>                                                                                                                                                                                                                                                        |
-| Account              | <p><em>Required</em><br>Provide your Snowflake account name here. You can access directly from the URL. Example: ACCOUNT NAME.snowflakecomputing.com</p>                                                                                                                                                                                                         |
-| Username             | <p><em>Required</em><br>Provide a username which will be used to create the tables and load data. This user needs to have all rights on the database, datawarehouse(only usage), and the schema you intend to use. In case you are creating a dedicated schema for the data from DataChannel (which is recommended), then this user can be the schema owner.</p> |
-| Password             | <p><em>Required</em><br>Provide the password for the username entered above.</p>                                                                                                                                                                                                                                                                                 |
-| Warehouse Name       | <p><em>Required</em><br>Provide the name of the Warehouse. This can be accessed from the Warehouses Tab.</p>                                                                                                                                                                                                                                                     |
-| DB Name              | <p><em>Required</em><br>Provide the name of the database you have created in your Snowflake instance.</p>                                                                                                                                                                                                                                                        |
-| Schema Name          | <p><em>Required</em><br>Provide the database schema where DataChannel should push the data. As mentioned above, it is recommended to create a new schema for DataChannel in your database.</p>                                                                                                                                                                   |
-| Snowflake Stage Name | <p><em>Required</em><br>Provide the Internal Stage name here that should be used to load data to tables. This internal stage should be created in the same database which is being used to load data. This can be accessed from the Databases Tab. Cick on the Database you are using and Go to the Stages Tab.</p>                                              |
+You can authenticate using:
+
+* **Standard Authentication** (username & password)
+* **Key Pair Authentication** (for secure, key-based login)
+
+#### ✅ Option 1: Standard Authentication
+
+This is the simplest method if you have a username/password for your Snowflake account.
+
+You’ll need:
+
+*   **Username**: Your Snowflake login name
+
+    Example: _readonly\_user_
+*   **Password**: The associated password
+
+    This field is securely hidden in the UI.
+
+Use this if you already log in manually to Snowflake using a username and password.
+
+#### 🔐 Option 2: Key Pair Authentication
+
+This method is recommended for automated, production environments.
+
+You’ll need:
+
+*   **User**: Your Snowflake username
+
+    Same as in Standard Auth.
+* **Private Key**: A **private key in PKCS#8 PEM format**\
+  ❗ **Formatting Requirements:**
+  * The key **must be in PEM format (not raw base64 or DER).**
+  * It should start with -----BEGIN PRIVATE KEY----- and end with -----END PRIVATE KEY-----.
+  * Ensure the key is in **PKCS#8** format (not PKCS#1).
+  * The key should be **unencrypted**, or if encrypted, provide the correct passphrase.
+
+Example:
+
+```
+-----BEGIN PRIVATE KEY-----
+MIIEv...your_key...AB
+-----END PRIVATE KEY-----
+```
+
+*   **Private Key Passphrase (optional):**\
+    If your private key is encrypted, enter the exact passphrase here.
+
+    If your key is unencrypted, leave this blank.
+
+> ℹ️ The private key will be automatically converted to the format expected by Snowflake during connection, so just ensure you copy-paste the PEM content correctly (with all line breaks).
+
+***
+
+### ✅ Final Notes
+
+* Ensure the selected warehouse, database, schema, and stage are accessible.
+* Key Pair Authentication is recommended for better security.
+* All required fields must be filled before saving.
+
+Once configured, DataChannel will validate the connection and make your Snowflake warehouse available for querying.
