@@ -99,11 +99,18 @@ You’ll need:
 
 Redshift uses Amazon S3 for data operations such as UNLOAD and COPY. DataChannel requires S3 credentials and location details to support these operations.
 
-1. **S3 Region**\
-   The AWS region where your S3 bucket is located. Default: us-east-1
-2. **S3 Bucket**\
-   The name of the S3 bucket used for Redshift data operations. Example: dc-redshift-staging-bucket
-3. **S3 Access Key**\
-   The AWS access key for the S3 account used by Redshift. This value is securely masked in the UI.
-4. **S3 Secret Key**\
-   The corresponding AWS secret key. This value is also securely masked.
+**1. S3 Region**
+
+The AWS region where your S3 bucket is located.Default: us-east-1
+
+**2. S3 Bucket**
+
+The name of the S3 bucket used for Redshift data operations. Example: dc-redshift-staging-bucket
+
+**3. S3 Access Key**
+
+The AWS access key for the S3 account used by Redshift. This value is securely masked in the UI.
+
+**4. S3 Secret Key**
+
+The corresponding AWS secret key. This value is also securely masked.
