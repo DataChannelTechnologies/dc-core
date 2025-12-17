@@ -20,8 +20,7 @@ Here’s what each field means and how to fill it out:
 Pick a **unique name** for this MySQL warehouse.\
 This name helps you identify the warehouse later, especially when managing multiple MySQL or other database connections.
 
-Example:\
-&#xNAN;_&#x6D;ysql-prod, user-service-db, team-marketing-mysql_
+Example: mysql-prod, user-service-db, team-marketing-mysql
 
 > ⚠️ This name must be **unique** across all your sources.
 
