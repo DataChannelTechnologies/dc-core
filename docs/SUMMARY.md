@@ -8,4 +8,4 @@
   * [MySQL](destinations/warehouses/mysql.md)
   * [Redshift](destinations/warehouses/redshift.md)
   * [Snowflake](destinations/warehouses/snowflake.md)
-  * [Page 1](destinations/warehouses/page-1.md)
+  * [Sap Hana](destinations/warehouses/sap-hana.md)
