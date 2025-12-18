@@ -2,7 +2,7 @@
 
 This guide helps you configure a connection to Azure Synapse Analytics so you can securely query and ingest data from your Synapse workspace into DataChannel. It explains all required fields, authentication details, and Azure Blob Storage settings used for data staging.
 
-#### ✍️ Getting Started <a href="#getting-started" id="getting-started"></a>
+### ✍️ Getting Started <a href="#getting-started" id="getting-started"></a>
 
 To set up an Azure Synapse Analytics warehouse in DataChannel, you’ll need:
 
@@ -11,7 +11,7 @@ To set up an Azure Synapse Analytics warehouse in DataChannel, you’ll need:
 * Username and password for authentication
 * Azure Blob Storage account details for data staging
 
-#### 🛠 Connection Details <a href="#connection-details" id="connection-details"></a>
+### 🛠 Connection Details <a href="#connection-details" id="connection-details"></a>
 
 Here’s a breakdown of what each field means and how to fill it:
 
@@ -47,11 +47,11 @@ The default schema to use within the selected database. Example: _dbo, marketing
 
 All queries and data operations will run within this schema by default.
 
-#### 🔐 Authentication Options <a href="#authentication-options" id="authentication-options"></a>
+### 🔐 Authentication Options <a href="#authentication-options" id="authentication-options"></a>
 
 Azure Synapse Analytics currently supports **Standard Username & Password authentication** in DataChannel.
 
-**✅ Standard Authentication**
+#### **✅ Standard Authentication**
 
 Use this option if your Synapse SQL pool is accessed using a SQL username and password.
 
@@ -109,7 +109,7 @@ Make sure the container exists and the provided account key has read and write a
 
 ***
 
-#### ✅ Final Notes
+### ✅ Final Notes
 
 * Verify that all required fields are filled in before saving the warehouse configuration.
 * The Synapse user must have access to both the database schema and external data operations.
