@@ -22,9 +22,7 @@ This helps you identify the warehouse later when managing multiple warehouses ac
 
 Examples: sap-hana-prod, finance-hana, erp-reporting-hana
 
-{% hint style="info" %}
-The name must be unique across all warehouses configured in DataChannel.
-{% endhint %}
+> ⚠️ This name must be **unique** across all your sources.
 
 **2. Host**
 
@@ -72,9 +70,7 @@ The password associated with the user
 
 The password is securely masked in the UI.
 
-{% hint style="info" %}
-Ensure that the user has sufficient privileges to access the specified schema and execute queries.
-{% endhint %}
+> ⚠️ Ensure that the user has sufficient privileges to access the specified schema and execute queries.
 
 ***
 

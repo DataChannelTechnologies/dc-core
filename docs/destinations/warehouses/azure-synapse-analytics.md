@@ -69,9 +69,7 @@ The password associated with the user
 
 This value is securely masked in the UI.
 
-{% hint style="info" %}
-🔐 Ensure that this user has sufficient permissions to access the specified database and schema.
-{% endhint %}
+> 🔐 Ensure that this user has sufficient permissions to access the specified database and schema.
 
 #### ☁️ Azure Blob Storage (Required)
 
