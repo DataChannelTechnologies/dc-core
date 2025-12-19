@@ -25,7 +25,7 @@ DataChannel supports two ways to set up BigQuery:
 
 Choose the option that best fits your setup.
 
-### 🛠 Common Configuration
+#### 🛠 Common Configuration
 
 These fields apply regardless of the setup option you choose.
 
@@ -37,7 +37,7 @@ Examples: bigquery-prod, analytics-bq
 
 > ⚠️ This name must be unique across all warehouses.
 
-### 🧩 Option 1: DataChannel-Managed BigQuery Warehouse
+#### 🧩 Option 1: DataChannel-Managed BigQuery Warehouse
 
 Choose this option if you want DataChannel to automatically manage:
 
@@ -61,11 +61,11 @@ No manual credential setup is required.
 
 DataChannel automatically manages GCS configuration for staging and data operations.
 
-### 🧩 Option 2: Connect Your Own BigQuery Warehouse
+#### 🧩 Option 2: Connect Your Own BigQuery Warehouse
 
 Choose this option if you already have a BigQuery setup and want full control.
 
-### 🔐 Authentication (Client-Managed)
+#### 🔐 Authentication (Client-Managed)
 
 #### Service Account Authentication
 
