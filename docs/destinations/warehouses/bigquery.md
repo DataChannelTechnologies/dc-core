@@ -83,8 +83,6 @@ Assign one of the following approaches:
 
 Grant these roles to the service account:
 
-Grant these roles to the service account:
-
 | Role Name            | Purpose                                  |
 | -------------------- | ---------------------------------------- |
 | BigQuery Data Editor | Read/write access to datasets and tables |
