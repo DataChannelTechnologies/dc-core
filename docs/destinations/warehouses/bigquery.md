@@ -25,7 +25,7 @@ DataChannel supports two ways to set up BigQuery:
 
 Choose the option that best fits your setup.
 
-#### 🛠 Common Configuration
+### 🛠 Common Configuration
 
 These fields apply regardless of the setup option you choose.
 
