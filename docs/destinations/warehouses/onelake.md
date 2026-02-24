@@ -9,8 +9,6 @@ To connect OneLake, you’ll need:
 * Fabric Identifiers: Workspace ID, Lakehouse ID, and Tenant ID.
 * Authentication: Client ID and Secret Value (Service Principal) for secure access.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
-
 ***
 
 ### 🛠 Connection Details
