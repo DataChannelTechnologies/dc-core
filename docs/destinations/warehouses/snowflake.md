@@ -21,7 +21,9 @@ Give this source a unique name so you can easily identify it later.
 
 Example: _snowflake-prod, marketing-snowflake, team-analytics-wh_
 
-> ⚠️ This name must be unique across all sources you configure.
+{% hint style="warning" %}
+This name must be unique across all sources you configure.
+{% endhint %}
 
 #### Account
 
