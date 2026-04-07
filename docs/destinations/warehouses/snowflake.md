@@ -15,7 +15,7 @@ To connect to Snowflake, you’ll need to fill in:
 
 Here’s what each field means and how to fill it out:
 
-#### 1. Name
+#### Name
 
 Give this source a unique name so you can easily identify it later.
 
@@ -23,7 +23,7 @@ Example: _snowflake-prod, marketing-snowflake, team-analytics-wh_
 
 > ⚠️ This name must be unique across all sources you configure.
 
-#### 2. Account
+#### Account
 
 Provide your **Snowflake account identifier**. This usually looks like: _your\_org-account\_name_\
 or\
@@ -31,24 +31,24 @@ or\
 
 Check your Snowflake URL—it’s usually the part before .snowflakecomputing.com.
 
-#### 3. Warehouse
+#### Warehouse
 
 This is the compute resource that runs your queries.\
 Specify the warehouse you want to use for this connection.\
 Example: _COMPUTE\_WH_, _ANALYTICS\_WH_
 
-#### 4. Database
+#### Database
 
 Enter the **database name** where your data resides.\
 Example: _sales\_data, customer\_360, internal\_metrics_
 
-#### 5. Schema Name
+#### Schema Name
 
 Specify the schema inside the selected database.
 
 Examples: public, analytics
 
-#### 6. Stage Name
+#### Stage Name
 
 Provide the name of the Snowflake stage used for data loading operations.
 
