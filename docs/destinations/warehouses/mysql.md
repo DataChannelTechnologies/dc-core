@@ -46,8 +46,8 @@ Example: _customer\_data, inventory_
 
 Depending on how your server is configured, you can choose between:
 
-#### ✅ Option 1: Standard Authentication
-
+{% tabs %}
+{% tab title="Standard Authentication" %}
 Use this if your database uses a username and password for login.
 
 You’ll need:
@@ -58,9 +58,9 @@ You’ll need:
 *   **Password**: The corresponding password
 
     This will be securely masked in the UI.
+{% endtab %}
 
-#### 🔒 Option 2: SSL Authentication
-
+{% tab title="SSL Authentication" %}
 Use this if your server requires SSL certificate-based authentication for enhanced security.
 
 You’ll need:
@@ -88,6 +88,8 @@ You’ll need:
       * \-----BEGIN CERTIFICATE-----
       * \-----END CERTIFICATE-----
 * The private key must match the provided client certificate
+{% endtab %}
+{% endtabs %}
 
 ✅ Final Notes
 
