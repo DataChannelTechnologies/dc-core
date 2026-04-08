@@ -20,15 +20,17 @@ Here’s what each field means and how to fill it out:
 Pick a **unique name** for this MySQL warehouse.\
 This name helps you identify the warehouse later, especially when managing multiple MySQL or other database connections.
 
-Example: mysql-prod, user-service-db, team-marketing-mysql
+> Example: mysql-prod, user-service-db, team-marketing-mysql
 
-> ⚠️ This name must be **unique** across all your sources.
+{% hint style="warning" %}
+This name must be **unique** across all your sources.
+{% endhint %}
 
 #### 2. Host
 
 Provide the hostname or IP address of your MySQL server.
 
-Examples: mysql.internal.company.com, 10.0.0.12
+> Examples: mysql.internal.company.com, 10.0.0.12
 
 If your database is hosted on a cloud provider (AWS RDS, GCP Cloud SQL, Azure Database for MySQL), use the endpoint provided by the service.
 
@@ -39,8 +41,9 @@ Default is **3306** — change it only if your server uses a different port.
 
 #### 4. Database
 
-Enter the name of the **database** you want to connect to.\
-Example: _customer\_data, inventory_
+Enter the name of the **database** you want to connect to.
+
+> Example: _customer\_data, inventory_
 
 ### 🔐 Authentication Options
 
@@ -91,7 +94,7 @@ You’ll need:
 {% endtab %}
 {% endtabs %}
 
-✅ Final Notes
+### ✅ Final Notes
 
 * Make sure the MySQL user has sufficient permissions to access the selected database.
 * If SSL is enabled on the server, Standard Authentication without certificates may fail.
