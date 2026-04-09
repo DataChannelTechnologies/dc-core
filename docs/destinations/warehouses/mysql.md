@@ -49,8 +49,10 @@ Enter the name of the **database** you want to connect to.
 
 Depending on how your server is configured, you can choose between:
 
-{% tabs %}
-{% tab title="Standard Authentication" %}
+<details open>
+
+<summary><code>Option 1</code>  Standard Authentication</summary>
+
 Use this if your database uses a username and password for login.
 
 You’ll need:
@@ -61,9 +63,13 @@ You’ll need:
 *   **Password**: The corresponding password
 
     This will be securely masked in the UI.
-{% endtab %}
 
-{% tab title="SSL Authentication" %}
+</details>
+
+<details open>
+
+<summary><code>Option 2</code>  SSL Authentication</summary>
+
 Use this if your server requires SSL certificate-based authentication for enhanced security.
 
 You’ll need:
@@ -91,8 +97,8 @@ You’ll need:
       * \-----BEGIN CERTIFICATE-----
       * \-----END CERTIFICATE-----
 * The private key must match the provided client certificate
-{% endtab %}
-{% endtabs %}
+
+</details>
 
 ### ✅ Final Notes
 
