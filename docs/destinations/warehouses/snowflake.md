@@ -19,7 +19,7 @@ Here’s what each field means and how to fill it out:
 
 Give this source a unique name so you can easily identify it later.
 
-Example: _snowflake-prod, marketing-snowflake, team-analytics-wh_
+> Example: _snowflake-prod, marketing-snowflake, team-analytics-wh_
 
 {% hint style="warning" %}
 This name must be unique across all sources you configure.
@@ -27,22 +27,26 @@ This name must be unique across all sources you configure.
 
 #### Account
 
-Provide your **Snowflake account identifier**. This usually looks like: _your\_org-account\_name_\
-or\
-&#xNAN;_&#x78;yz12345.us-east-1_
+Provide your **Snowflake account identifier**. This usually looks like:&#x20;
+
+> _your\_org-account\_name_\
+> or\
+> &#xNAN;_&#x78;yz12345.us-east-1_
 
 Check your Snowflake URL—it’s usually the part before .snowflakecomputing.com.
 
 #### Warehouse
 
 This is the compute resource that runs your queries.\
-Specify the warehouse you want to use for this connection.\
-Example: _COMPUTE\_WH_, _ANALYTICS\_WH_
+Specify the warehouse you want to use for this connection.
+
+> Example: _COMPUTE\_WH_, _ANALYTICS\_WH_
 
 #### Database
 
-Enter the **database name** where your data resides.\
-Example: _sales\_data, customer\_360, internal\_metrics_
+Enter the **database name** where your data resides.
+
+> Example: _sales\_data, customer\_360, internal\_metrics_
 
 #### Schema Name
 
@@ -56,7 +60,7 @@ Provide the name of the Snowflake stage used for data loading operations.
 
 This stage must already exist and be accessible to the selected user.
 
-Examples: internal\_stage, datacontainer\_stage
+> Examples: internal\_stage, datacontainer\_stage
 
 ### 🔐 Choose Your Authentication Method
 
@@ -65,7 +69,9 @@ You can authenticate using:
 * **Standard Authentication** (username & password)
 * **Key Pair Authentication** (for secure, key-based login)
 
-#### ✅ Option 1: Standard Authentication
+<details>
+
+<summary><code>Option 1</code>  Standard Authentication</summary>
 
 This is the simplest method if you have a username/password for your Snowflake account.
 
@@ -80,7 +86,11 @@ You’ll need:
 
 Use this if you already log in manually to Snowflake using a username and password.
 
-#### 🔐 Option 2: Key Pair Authentication
+</details>
+
+<details>
+
+<summary><code>Option 2</code> Key Pair Authentication</summary>
 
 This method is recommended for automated, production environments.
 
@@ -109,9 +119,11 @@ MIIEv...your_key...AB
 
     If your key is unencrypted, leave this blank.
 
-> ℹ️ The private key will be automatically converted to the format expected by Snowflake during connection, so just ensure you copy-paste the PEM content correctly (with all line breaks).
+{% hint style="info" %}
+The private key will be automatically converted to the format expected by Snowflake during connection, so just ensure you copy-paste the PEM content correctly (with all line breaks).
+{% endhint %}
 
-***
+</details>
 
 ### ✅ Final Notes
 
