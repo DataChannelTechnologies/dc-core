@@ -15,7 +15,7 @@ To set up an Azure Synapse Analytics warehouse in DataChannel, you’ll need:
 
 Here’s a breakdown of what each field means and how to fill it:
 
-#### **1. Name**
+#### 1. Name
 
 Choose a unique name to identify this Synapse warehouse within DataChannel.
 
@@ -27,7 +27,7 @@ This helps you distinguish it later when managing multiple warehouses.
 This name must be **unique** across all your sources.
 {% endhint %}
 
-#### **2. Host**
+#### 2. Host
 
 Enter the fully qualified domain name (FQDN) of your Azure Synapse SQL server.
 
@@ -35,7 +35,7 @@ Enter the fully qualified domain name (FQDN) of your Azure Synapse SQL server.
 
 This value can be found in the Azure portal under your Synapse workspace → SQL pools.
 
-#### **4. Database**
+#### 4. Database
 
 Specify the name of the SQL pool (database) you want to connect to.
 
@@ -43,7 +43,7 @@ Specify the name of the SQL pool (database) you want to connect to.
 
 Ensure this database exists and is accessible to the provided user.
 
-#### **5. Schema**
+#### 5. Schema
 
 The default schema to use within the selected database.
 
@@ -57,7 +57,7 @@ Azure Synapse Analytics currently supports **Standard Username & Password authen
 
 <details>
 
-<summary>Standard Authentication</summary>
+<summary><strong>Standard Authentication</strong></summary>
 
 Use this option if your Synapse SQL pool is accessed using a SQL username and password.
 
@@ -83,7 +83,7 @@ This value is securely masked in the UI.
 
 <details>
 
-<summary>Azure Blob Storage (Required)</summary>
+<summary><strong>Azure Blob Storage <code>Required</code></strong></summary>
 
 Azure Synapse uses **Azure Blob Storage** for data staging operations such as loading and unloading data. DataChannel requires these details to perform data movement efficiently.
 
