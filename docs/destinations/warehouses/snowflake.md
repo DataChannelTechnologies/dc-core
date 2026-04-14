@@ -52,7 +52,7 @@ Enter the **database name** where your data resides.
 
 Specify the schema inside the selected database.
 
-Examples: public, analytics
+> Examples: public, analytics
 
 #### Stage Name
 
@@ -69,7 +69,7 @@ You can authenticate using:
 * **Standard Authentication** (username & password)
 * **Key Pair Authentication** (for secure, key-based login)
 
-<details>
+<details open>
 
 <summary><code>Option 1</code>  Standard Authentication</summary>
 
@@ -79,7 +79,8 @@ You’ll need:
 
 *   **Username**: Your Snowflake login name
 
-    Example: _readonly\_user_
+
+* Example: _readonly\_user_
 *   **Password**: The associated password
 
     This field is securely hidden in the UI.
@@ -88,7 +89,7 @@ Use this if you already log in manually to Snowflake using a username and passwo
 
 </details>
 
-<details>
+<details open>
 
 <summary><code>Option 2</code> Key Pair Authentication</summary>
 
