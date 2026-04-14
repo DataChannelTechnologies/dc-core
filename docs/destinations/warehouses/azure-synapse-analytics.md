@@ -55,9 +55,9 @@ All queries and data operations will run within this schema by default.
 
 Azure Synapse Analytics currently supports **Standard Username & Password authentication** in DataChannel.
 
-<details>
+<details open>
 
-<summary><strong>Standard Authentication</strong></summary>
+<summary>Standard Authentication</summary>
 
 Use this option if your Synapse SQL pool is accessed using a SQL username and password.
 
@@ -81,9 +81,9 @@ This value is securely masked in the UI.
 
 </details>
 
-<details>
+<details open>
 
-<summary><strong>Azure Blob Storage <code>Required</code></strong></summary>
+<summary>Azure Blob Storage <code>Required</code></summary>
 
 Azure Synapse uses **Azure Blob Storage** for data staging operations such as loading and unloading data. DataChannel requires these details to perform data movement efficiently.
 

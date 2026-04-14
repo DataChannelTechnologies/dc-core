@@ -14,45 +14,49 @@ To connect to an SAP HANA warehouse, you’ll need:
 
 Below is an explanation of each field and how to fill it correctly.
 
-**1. Name**
+#### 1. Name
 
 Choose a unique name for this SAP HANA warehouse configuration.
 
 This helps you identify the warehouse later when managing multiple warehouses across different systems.
 
-Examples: sap-hana-prod, finance-hana, erp-reporting-hana
+> Examples: sap-hana-prod, finance-hana, erp-reporting-hana
 
-> ⚠️ This name must be **unique** across all your sources.
+{% hint style="warning" %}
+This name must be **unique** across all your sources.
+{% endhint %}
 
-**2. Host**
+#### 2. Host
 
 Provide the hostname or IP address of your SAP HANA database server.
 
-Examples: hana.company.internal, 10.20.30.40
+> Examples: hana.company.internal, 10.20.30.40
 
 This should be the address where the HANA SQL service is reachable.
 
-**3. Port**
+#### 3. Port
 
 The port used to connect to the SAP HANA database.
 
-* Default: 30015
+> Default: 30015
 
 This is the standard SQL port for SAP HANA systems. Change it only if your HANA instance is configured to use a different port.
 
-**4. Schema**
+#### 4. Schema
 
 Specify the schema you want DataChannel to use for queries.
 
 This schema should already exist and be accessible by the user you authenticate with.
 
-Examples: SYSTEM, SALES, FINANCE\_REPORTING
+> Examples: SYSTEM, SALES, FINANCE\_REPORTING
 
 ### 🔐 Authentication Method
 
 SAP HANA connections in DataChannel use Standard Authentication.
 
-#### ✅ Standard Authentication
+<details open>
+
+<summary>Standard Authentication</summary>
 
 Use this method if your SAP HANA system authenticates users with a username and password.
 
@@ -70,9 +74,11 @@ The password associated with the user
 
 The password is securely masked in the UI.
 
-> ⚠️ Ensure that the user has sufficient privileges to access the specified schema and execute queries.
+{% hint style="warning" %}
+Ensure that the user has sufficient privileges to access the specified schema and execute queries.
+{% endhint %}
 
-***
+</details>
 
 ### ✅ Final Notes
 
