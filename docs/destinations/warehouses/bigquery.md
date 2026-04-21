@@ -63,21 +63,21 @@ No manual credential setup is required.
 
 DataChannel automatically manages GCS configuration for staging and data operations.
 
-#### 🧩 Option 2: Connect Your Own BigQuery Warehouse
+### 🧩 Option 2: Connect Your Own BigQuery Warehouse
 
 Choose this option if you already have a BigQuery setup and want full control.
 
 #### 🔐 Authentication (Client-Managed)
 
-#### Service Account Authentication
+**Service Account Authentication**
 
 DataChannel generates or displays a Service Account email in the UI.
 
-**Important Step**
-
+{% hint style="warning" %}
 You must grant the required permissions to this service account email in your Google Cloud project before proceeding.
+{% endhint %}
 
-#### Required IAM Roles
+**Required IAM Roles**
 
 Assign one of the following approaches:
 
