@@ -67,7 +67,7 @@ Turn this on only if your infrastructure requires SSH-based access.
 
 ### 🔐 Authentication Method
 
-#### **✅ Standard Authentication**
+#### **✅** Standard Authentication
 
 Use this method if you connect to Redshift using a database username and password.
 
@@ -85,12 +85,12 @@ Currently, this is the supported authentication method for Redshift connections.
 
 Redshift uses Amazon S3 for data operations such as UNLOAD and COPY. DataChannel requires S3 credentials and location details to support these operations.
 
-#### **S3 Region**
+#### S3 Region
 
 The AWS region where your S3 bucket is located.\
 Default: us-east-1
 
-#### **S3 Bucket**
+#### S3 Bucket
 
 The name of the S3 bucket used for Redshift data operations.&#x20;
 
