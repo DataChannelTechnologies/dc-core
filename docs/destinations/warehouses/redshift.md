@@ -2,7 +2,7 @@
 
 You can connect your Amazon Redshift data warehouse to DataChannel by providing a few essential configuration details. This guide walks you through each required setting step by step, including authentication and S3 credentials used for data operations.
 
-#### ✍️ Getting Started
+### ✍️ Getting Started
 
 To connect Redshift, you'll need:
 
@@ -13,45 +13,51 @@ To connect Redshift, you'll need:
     * **Access Key Authentication**
     * **IAM Role (Assume Role)**
 
-#### 🛠 Connection Details
+### 🛠 Connection Details
 
 Below are the details required to configure a Redshift connection.
 
-**1. Name**
+#### 1. Name
 
 Choose a unique name for this Redshift data warehouse configuration.
 
 This helps you identify the warehouse later if you have multiple Redshift or other data warehouse connections.
 
-Examples:\
-prod-redshift-west\
-team-finance-redshift
+> Examples:\
+> prod-redshift-west\
+> team-finance-redshift
 
-> ⚠️ The name **must be unique** for each warehouse you add.
+{% hint style="warning" %}
+The name **must be unique** for each warehouse you add.
+{% endhint %}
 
-**2. Host**
+#### 2. Host
 
 Enter the hostname of your Redshift cluster.\
 It typically looks like:\
 redshift-cluster-1.abc123xyz.us-west-2.redshift.amazonaws.com
 
-**3. Port**
+#### 3. Port
 
 Redshift uses port 5439 by default. Change this only if your Redshift cluster uses a different port.
 
-**4. Database**
+#### 4. Database
 
-Provide the name of the Redshift database you want to connect to. Example: _analytics\_db_
+Provide the name of the Redshift database you want to connect to.&#x20;
 
-**5. Schema**
+> Example: _analytics\_db_
 
-Specify the schema inside your database that contains your data. Example: _public, sales, marketing\_data_
+#### 5. Schema
 
-**6. Connection Timeout (Optional)**
+Specify the schema inside your database that contains your data.&#x20;
+
+> Example: _public, sales, marketing\_data_
+
+#### 6. Connection Timeout (Optional)
 
 This is the time (in seconds) that the system will wait while trying to connect before giving up. If you're unsure, stick with the default: **60 seconds.**
 
-**7. Use Reverse SSH Tunnel (Optional)**
+#### 7. Use Reverse SSH Tunnel (Optional)
 
 Enable this option if your Redshift cluster is not publicly accessible and must be reached through a reverse SSH tunnel.
 
@@ -59,9 +65,9 @@ Enable this option if your Redshift cluster is not publicly accessible and must 
 
 Turn this on only if your infrastructure requires SSH-based access.
 
-#### 🔐 Authentication Method
+### 🔐 Authentication Method
 
-**✅ Standard Authentication**
+#### **✅ Standard Authentication**
 
 Use this method if you connect to Redshift using a database username and password.
 
@@ -71,26 +77,32 @@ You'll need to provide:
 * **Password**: The password for that user\
   🔒 The password is securely masked in the UI.
 
-> ℹ️ Currently, this is the supported authentication method for Redshift connections.
+{% hint style="info" %}
+Currently, this is the supported authentication method for Redshift connections.
+{% endhint %}
 
-#### ☁️ S3 Credentials (Required)
+### ☁️ S3 Credentials (Required)
 
 Redshift uses Amazon S3 for data operations such as UNLOAD and COPY. DataChannel requires S3 credentials and location details to support these operations.
 
-**S3 Region**
+#### **S3 Region**
 
 The AWS region where your S3 bucket is located.\
 Default: us-east-1
 
-**S3 Bucket**
+#### **S3 Bucket**
 
-The name of the S3 bucket used for Redshift data operations. Example: dc-redshift-staging-bucket
+The name of the S3 bucket used for Redshift data operations.&#x20;
 
-#### 🔐 S3 Authentication Method
+> Example: dc-redshift-staging-bucket
+
+### 🔐 S3 Authentication Method
 
 You must choose one of the following methods to allow DataChannel to access your S3 staging area.
 
-**🔑 Option 1: Access Key Authentication**
+<details>
+
+<summary><code>Option 1</code> Access Key Authentication</summary>
 
 Use this method if you want to provide AWS credentials directly.
 
@@ -103,18 +115,25 @@ You'll need:
 
 This method is simple to set up and works well for development or controlled environments. However, it requires managing long-lived credentials.
 
-**🛡️ Option 2: IAM Role (Assume Role)**
+</details>
+
+<details>
+
+<summary><code>Option 2</code>  IAM Role (Assume Role)</summary>
 
 Use this method if you prefer to authenticate using an IAM role instead of static credentials.
 
 You'll need:
 
-* **Role ARN**: The Amazon Resource Name (ARN) of the IAM role to assume\
-  Example: _arn:aws:iam::123456789012:role/MyRedshiftRole_
+* **Role ARN**: The Amazon Resource Name (ARN) of the IAM role to assume
+
+> Example: _arn:aws:iam::123456789012:role/MyRedshiftRole_
 
 In this setup, DataChannel assumes the specified IAM role to access the S3 bucket. This eliminates the need to store access keys and is generally more secure.
 
-> ℹ️ Ensure that the IAM role has the necessary permissions to access the specified S3 bucket and perform Redshift data operations.
+{% hint style="info" %}
+Ensure that the IAM role has the necessary permissions to access the specified S3 bucket and perform Redshift data operations.
+{% endhint %}
 
 **🔧 Setting Up Trust Relationship for Assume Role**
 
@@ -141,7 +160,9 @@ To allow DataChannel to assume your IAM role, you must configure a trust relatio
 }
 ```
 
-#### ✅ Final Notes
+</details>
+
+### ✅ Final Notes
 
 * Make sure all required fields are filled before saving the connection.
 * S3 credentials are required for Redshift data operations.

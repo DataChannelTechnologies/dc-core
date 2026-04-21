@@ -33,11 +33,13 @@ These fields apply regardless of the setup option you choose.
 
 A unique name for this BigQuery warehouse configuration.
 
-Examples: bigquery-prod, analytics-bq
+> Examples: bigquery-prod, analytics-bq
 
-> ⚠️ This name must be unique across all warehouses.
+{% hint style="warning" %}
+This name must be unique across all warehouses.
+{% endhint %}
 
-#### 🧩 Option 1: DataChannel-Managed BigQuery Warehouse
+### 🧩 Option 1: DataChannel-Managed BigQuery Warehouse
 
 Choose this option if you want DataChannel to automatically manage:
 
@@ -104,14 +106,16 @@ You may create a **custom role** with the following permissions:
 | storage.objects.delete        | storage.multipartUploads.create    | storage.multipartUploads.abort |
 | storage.multipartUploads.list | storage.multipartUploads.listParts |                                |
 
-> ℹ️ Use this option only if your organization restricts predefined roles.
+{% hint style="info" %}
+Use this option only if your organization restricts predefined roles.
+{% endhint %}
 
 #### Location
 
 Select the BigQuery dataset location.
 
-Examples:\
-`US`, `EU`, `asia-northeast1`
+> Examples:\
+> US, EU, asia-northeast1
 
 This must match your dataset’s location.
 
@@ -119,15 +123,15 @@ This must match your dataset’s location.
 
 The GCP project ID that contains your BigQuery dataset.
 
-Example:\
-`my-analytics-project`
+> Example:\
+> my-analytics-project
 
 #### Dataset ID
 
 The dataset DataChannel will read from and write to.
 
-Example:\
-`events_analytics`
+> Example:\
+> events\_analytics
 
 ### ☁️ GCS Configuration (Required)
 
@@ -137,12 +141,10 @@ BigQuery uses Google Cloud Storage for staging data.
 
 The name of the GCS bucket used for BigQuery data operations.
 
-Example:\
-`datacontainer-bq-staging`
+> Example:\
+> datacontainer-bq-staging
 
 Ensure the service account has access to this bucket.
-
-***
 
 ### ✅ Final Notes
 
