@@ -100,7 +100,7 @@ The name of the S3 bucket used for Redshift data operations.&#x20;
 
 You must choose one of the following methods to allow DataChannel to access your S3 staging area.
 
-<details>
+<details open>
 
 <summary><code>Option 1</code> Access Key Authentication</summary>
 
@@ -117,7 +117,7 @@ This method is simple to set up and works well for development or controlled env
 
 </details>
 
-<details>
+<details open>
 
 <summary><code>Option 2</code>  IAM Role (Assume Role)</summary>
 
