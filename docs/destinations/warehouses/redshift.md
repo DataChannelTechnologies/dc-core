@@ -152,7 +152,7 @@ To allow DataChannel to assume your IAM role, you must configure a trust relatio
             "Sid": "Statement1",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::539123038454:user/dc-assume-role-user"
+                "AWS": "arn:aws:iam::556040221475:user/dc-assume-role-user"
             },
             "Action": "sts:AssumeRole"
         }
