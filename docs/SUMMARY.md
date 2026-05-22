@@ -10,3 +10,4 @@
   * [Snowflake](destinations/warehouses/snowflake.md)
   * [Sap Hana](destinations/warehouses/sap-hana.md)
   * [OneLake](destinations/warehouses/onelake.md)
+  * [Databricks](destinations/warehouses/databricks.md)
