@@ -2,7 +2,7 @@
 
 You can connect your Databricks (Unity Catalog, Delta Lake) workspace to DataChannel by providing a few essential configuration details. This guide walks you through each required setting step by step, including warehouse identifiers and authentication credentials.
 
-#### ✍️ Getting Started
+## ✍️ Getting Started
 
 To connect Databricks, you'll need:
 
@@ -10,7 +10,7 @@ To connect Databricks, you'll need:
 * Unity Catalog: Catalog name, Schema, and Volume name.
 * Authentication: Personal Access Token or OAuth M2M Client ID and Client Secret (Service Principal).
 
-#### 🛠 Connection Details
+## 🛠 Connection Details
 
 Below are the details required to configure a Databricks connection.
 
@@ -60,7 +60,7 @@ Enter the Unity Catalog Volume name to use as a staging area. DataChannel upload
 The volume must already exist in Databricks. DataChannel does not create it automatically.
 {% endhint %}
 
-#### 🔐 Authentication
+## 🔐 Authentication
 
 DataChannel supports two authentication methods for Databricks.
 
@@ -96,7 +96,7 @@ This value is securely masked in the UI.
 Ensure that your Service Principal has the necessary permissions on the target catalog, schema, and volume in Unity Catalog to perform data operations.
 {% endhint %}
 
-#### ✅ Final Notes
+## ✅ Final Notes
 
 * **Insert Modes**: DataChannel supports Append (new rows added), Replace (table truncated then reloaded), and Upsert (rows merged on specified key columns).
 * **Table Creation**: If the target Delta table does not exist, DataChannel creates it automatically with schema evolution enabled.
