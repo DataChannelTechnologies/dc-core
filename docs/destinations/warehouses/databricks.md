@@ -64,7 +64,7 @@ The volume must already exist in Databricks. DataChannel does not create it auto
 
 DataChannel supports two authentication methods for Databricks.
 
-<details>
+<details open>
 
 <summary><code>Option 1</code> Personal Access Token (PAT)</summary>
 
@@ -80,7 +80,7 @@ PATs are tied to the generating user account. If that account is deactivated, th
 
 </details>
 
-<details>
+<details open>
 
 <summary><code>Option 2</code> OAuth M2M (Service Principal)</summary>
 
