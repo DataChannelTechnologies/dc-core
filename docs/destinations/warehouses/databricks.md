@@ -78,6 +78,8 @@ This value is securely masked in the UI.
 PATs are tied to the generating user account. If that account is deactivated, the token stops working. Prefer OAuth M2M for production use.
 {% endhint %}
 
+
+
 </details>
 
 <details open>
@@ -103,6 +105,20 @@ Ensure that your Service Principal has the necessary permissions on the target c
 {% endhint %}
 
 </details>
+
+**Scopes**
+
+The following permission scopes are required for DataChannel to interact with Databricks:
+
+| Scope            | Purpose                                                     |
+| ---------------- | ----------------------------------------------------------- |
+| `sql`            | Run SQL queries and access Databricks SQL warehouses        |
+| `unity-catalog`  | Read and manage Unity Catalog metadata, schemas, and tables |
+| `files`          | Access and transfer files via the Databricks Files API      |
+| `clusters`       | Create, manage, and terminate compute clusters              |
+| `authentication` | Validate identity and manage credential-based access        |
+
+Ensure the authenticating user or service principal has been granted all of the above scopes. Missing scopes will result in partial connectivity or permission errors at runtime.
 
 ### ✅ Final Notes
 
