@@ -67,7 +67,9 @@ Turn this on only if your infrastructure requires SSH-based access.
 
 ### 🔐 Authentication Method
 
-#### **✅** Standard Authentication
+<details>
+
+<summary><code>Option 1</code> Standard Authentication</summary>
 
 Use this method if you connect to Redshift using a database username and password.
 
@@ -77,9 +79,54 @@ You'll need to provide:
 * **Password**: The password for that user\
   🔒 The password is securely masked in the UI.
 
+</details>
+
+
+
+<details open>
+
+<summary><code>Option 2</code>  IAM Role (Assume Role)</summary>
+
+Use this method if you prefer to authenticate using an IAM role instead of static credentials.
+
+You'll need:
+
+* **Role ARN**: The Amazon Resource Name (ARN) of the IAM role to assume
+
+> Example: _arn:aws:iam::123456789012:role/MyRedshiftRole_
+
+In this setup, DataChannel assumes the specified IAM role to access the Redshift. This eliminates the need to store access keys and is generally more secure.
+
 {% hint style="info" %}
-Currently, this is the supported authentication method for Redshift connections.
+Ensure that the IAM role has the necessary permissions to access the specified Redshift and perform Redshift data operations.
 {% endhint %}
+
+**🔧 Setting Up Trust Relationship for Assume Role**
+
+To allow DataChannel to assume your IAM role, you must configure a trust relationship.
+
+**Steps:**
+
+1. Go to **IAM → Roles → \[your IAM role] → Trust Relationships**
+2. Edit the trust relationship policy and attach the following:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Statement1",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::556040221475:user/dc-assume-role-user"
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
+```
+
+</details>
 
 ### ☁️ S3 Credentials (Required)
 
