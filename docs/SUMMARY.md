@@ -2,7 +2,7 @@
 
 ## Destinations
 
-* [Warehouses](README.md)
+* [Warehouses](destinations/warehouses/README.md)
   * [BigQuery](destinations/warehouses/bigquery.md)
   * [Azure Synapse Analytics](destinations/warehouses/azure-synapse-analytics.md)
   * [MySQL](destinations/warehouses/mysql.md)
