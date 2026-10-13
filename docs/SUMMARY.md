@@ -11,3 +11,4 @@
   * [Sap Hana](destinations/warehouses/sap-hana.md)
   * [OneLake](destinations/warehouses/onelake.md)
   * [Databricks](destinations/warehouses/databricks.md)
+  * [S3 Datalake](destinations/warehouses/s3-datalake.md)
