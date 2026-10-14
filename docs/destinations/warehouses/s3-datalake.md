@@ -4,7 +4,7 @@ You can use your own Amazon S3 bucket as a data lake destination in DataChannel.
 
 This guide walks you through the details needed to connect and the AWS setup DataChannel requires.
 
-#### ✍️ Getting Started
+### ✍️ Getting Started
 
 To connect S3 Data Lake, you'll need:
 
@@ -63,11 +63,11 @@ The name of the S3 bucket where DataChannel will store the table data. Enter onl
 Each table is stored under its own folder in the bucket:
 
 ```
-s3://<bucket>/<table_name>/          ← Iceberg table data and metadata
-s3://<bucket>/_staging/              ← temporary load files (cleaned up automatically)
+s3://YOUR_BUCKET/TABLE_NAME/          ← Iceberg table data and metadata
+s3://YOUR_BUCKET/_staging/              ← temporary load files (cleaned up automatically)
 ```
 
-#### 🔐 Authentication: IAM Role (Assume Role)
+### 🔐 Authentication: IAM Role (Assume Role)
 
 DataChannel connects to your AWS account by assuming an IAM role you create. No access keys are stored. DataChannel receives short-lived credentials that are refreshed automatically.
 
@@ -104,7 +104,7 @@ To allow DataChannel to assume your IAM role, configure its trust relationship.
 
 **🔧 Step 2: Grant Permissions to the Role**
 
-Attach a permissions policy to the role. Replace `<bucket>`, `<region>`, `<account_id>` and `<glue_database>` with your values.
+Attach a permissions policy to the role. Replace `YOUR_BUCKET`, `YOUR_REGION`, `YOUR_GLUE_DATABASE` and `YOUR_ACCOUNT_ID` with your values. `YOUR_ACCOUNT_ID` is **your** 12-digit AWS account ID — the same number that appears in your role ARN.
 
 ```json
 {
@@ -122,9 +122,9 @@ Attach a permissions policy to the role. Replace `<bucket>`, `<region>`, `<accou
                 "glue:DeleteTable"
             ],
             "Resource": [
-                "arn:aws:glue:<region>:<account_id>:catalog",
-                "arn:aws:glue:<region>:<account_id>:database/<glue_database>",
-                "arn:aws:glue:<region>:<account_id>:table/<glue_database>/*"
+                "arn:aws:glue:YOUR_REGION:YOUR_ACCOUNT_ID:catalog",
+                "arn:aws:glue:YOUR_REGION:YOUR_ACCOUNT_ID:database/YOUR_GLUE_DATABASE",
+                "arn:aws:glue:YOUR_REGION:YOUR_ACCOUNT_ID:table/YOUR_GLUE_DATABASE/*"
             ]
         },
         {
@@ -138,8 +138,8 @@ Attach a permissions policy to the role. Replace `<bucket>`, `<region>`, `<accou
                 "s3:GetBucketLocation"
             ],
             "Resource": [
-                "arn:aws:s3:::<bucket>",
-                "arn:aws:s3:::<bucket>/*"
+                "arn:aws:s3:::YOUR_BUCKET",
+                "arn:aws:s3:::YOUR_BUCKET/*"
             ]
         },
         {
@@ -152,7 +152,7 @@ Attach a permissions policy to the role. Replace `<bucket>`, `<region>`, `<accou
                 "athena:GetQueryResults"
             ],
             "Resource": [
-                "arn:aws:athena:<region>:<account_id>:workgroup/primary"
+                "arn:aws:athena:YOUR_REGION:YOUR_ACCOUNT_ID:workgroup/primary"
             ]
         },
         {
@@ -166,8 +166,8 @@ Attach a permissions policy to the role. Replace `<bucket>`, `<region>`, `<accou
                 "athena:ListTableMetadata"
             ],
             "Resource": [
-                "arn:aws:athena:<region>:<account_id>:datacatalog/AwsDataCatalog",
-                "arn:aws:athena:<region>:<account_id>:workgroup/primary"
+                "arn:aws:athena:YOUR_REGION:YOUR_ACCOUNT_ID:datacatalog/AwsDataCatalog",
+                "arn:aws:athena:YOUR_REGION:YOUR_ACCOUNT_ID:workgroup/primary"
             ]
         },
         {
@@ -186,7 +186,7 @@ Attach a permissions policy to the role. Replace `<bucket>`, `<region>`, `<accou
 **Athena query results:** DataChannel runs its queries in the `primary` Athena workgroup and uses that workgroup's own settings. Make sure the workgroup has a **query result location** set (or uses Athena managed query results). If the result location is in a different bucket, also give the role `s3:GetObject`, `s3:PutObject` and `s3:ListBucket` on that bucket.
 {% endhint %}
 
-#### 📦 How Data Is Loaded
+### 📦 How Data Is Loaded
 
 * Tables are created automatically as **Apache Iceberg** tables in your Glue database on the first load.
 * **Table and column names are stored in lowercase**, because Glue stores all names in lowercase. Names may contain only letters, numbers and underscores. `_staging` is reserved and cannot be used as a table name.
@@ -199,17 +199,17 @@ Attach a permissions policy to the role. Replace `<bucket>`, `<region>`, `<accou
 | **Replace** | Existing rows are removed, then the new data is loaded.                  |
 | **Upsert**  | Rows matching the selected key columns are replaced; new rows are added. |
 
-* Load files are first written to `s3://<bucket>/_staging/` and are removed once the load finishes.
+* Load files are first written to `s3://YOUR_BUCKET/_staging/` and are removed once the load finishes.
 
 {% hint style="info" %}
-Every write creates a new **Iceberg snapshot**. You can query an earlier version of a table in Athena with `FOR VERSION AS OF <snapshot_id>` or `FOR TIMESTAMP AS OF <timestamp>`.
+Every write creates a new **Iceberg snapshot**. You can query an earlier version of a table in Athena with `FOR VERSION AS OF SNAPSHOT_ID` or `FOR TIMESTAMP AS OF TIMESTAMP '2026-01-01 00:00:00'`.
 {% endhint %}
 
 {% hint style="warning" %}
 Queries run in your AWS account, so Athena query charges and S3/Glue costs are billed to your AWS account.
 {% endhint %}
 
-#### ✅ Final Notes
+### ✅ Final Notes
 
 * Make sure all required fields are filled before saving the connection.
 * The Glue database must exist before you connect, and the bucket, Glue database and Athena must be in the selected region.
